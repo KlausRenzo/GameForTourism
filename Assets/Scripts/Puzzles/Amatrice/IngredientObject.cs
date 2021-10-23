@@ -43,14 +43,13 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		//}
 
 
-		public void StartDrag()
+		public virtual void StartDrag()
 		{
 			isDragged = true;
-
 			rigidbody.isKinematic = true;
 		}
 
-		public void StopDrag()
+		public virtual void StopDrag()
 		{
 			isDragged = false;
 			rigidbody.isKinematic = false;

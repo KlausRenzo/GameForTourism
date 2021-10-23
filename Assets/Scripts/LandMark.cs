@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Puzzles;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -8,5 +9,6 @@ namespace Assets.Scripts
 	public class LandMark : ScriptableObject
 	{
 		public string name;
+		public PuzzleDefinition puzzle;
 	}
 }

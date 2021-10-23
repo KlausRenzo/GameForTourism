@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -35,6 +36,15 @@ namespace Assets.Scripts
 
 		public void MouseExit()
 		{
+
+		}
+
+		public void OnTriggerEnter(Collider collider)
+		{
+			if (collider.gameObject.GetComponent<Player>())
+			{
+				SceneManager.LoadScene(info.puzzle?.sceneName);
+			}
 
 		}
 	}
