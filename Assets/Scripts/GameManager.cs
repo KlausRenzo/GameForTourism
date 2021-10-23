@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
 	void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.P))
+		if (Input.GetKeyDown(KeyCode.P))
 			LoadPuzzle(puzzle);
 
 		if (Input.GetKeyDown(KeyCode.S))
@@ -69,9 +69,11 @@ public class GameManager : MonoBehaviour
 		ShowReward(infoPuzzle.reward);
 	}
 
-	private void ShowReward(object infoPuzzleReward)
+	public GameUiManager gameUiManager;
+
+	private void ShowReward(RewardDefinition infoPuzzleReward)
 	{
-		
+		gameUiManager.ShowReward(infoPuzzleReward);
 	}
 
 	public void RegisterLandmark(LandMarkObject landmark)

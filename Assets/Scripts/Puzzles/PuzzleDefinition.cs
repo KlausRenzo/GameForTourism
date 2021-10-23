@@ -9,6 +9,6 @@ namespace Assets.Scripts.Puzzles
 	{
 		public LandMark landMark;
 		public string sceneName;
-		public object reward;
+		public RewardDefinition reward;
 	}
 }
