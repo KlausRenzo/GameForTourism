@@ -7,6 +7,7 @@ namespace Assets.Scripts
 	{
 		public LandMark info;
 		private TextMesh text;
+		public Material completeMaterial;
 
 		// Start is called before the first frame update
 		void Awake()
@@ -17,6 +18,8 @@ namespace Assets.Scripts
 		void Start()
 		{
 			text.text = info.name;
+
+			GameManager.Instance.RegisterLandmark(this);
 		}
 
 		// Update is called once per frame
@@ -25,8 +28,9 @@ namespace Assets.Scripts
 			var camera = Camera.main;
 
 			text.transform.LookAt(camera.transform);
-			
-			
+
+			if(Input.GetKeyDown(KeyCode.H))
+				SetComplete();
 		}
 
 		public void MouseEnter()
@@ -43,9 +47,18 @@ namespace Assets.Scripts
 		{
 			if (collider.gameObject.GetComponent<Player>())
 			{
-				SceneManager.LoadScene(info.puzzle?.sceneName);
+				GameManager.Instance.LoadPuzzle(info.puzzle);
 			}
 
+		}
+
+		public bool isComplete;
+		
+		public void SetComplete()
+		{
+			isComplete = true;
+
+			this.GetComponent<MeshRenderer>().material = completeMaterial;
 		}
 	}
 }

@@ -6,8 +6,33 @@ namespace Assets.Scripts.Puzzles.Amatrice
 	public class RecipeManager : MonoBehaviour
 	{
 		public Recipe recipe;
+		public PuzzleDefinition puzzle;
 
 		public List<Ingredient> ingredients = new List<Ingredient>();
+		public UiManager uiManager;
+
+		public void Start()
+		{
+			recipe.StepOk += Recipe_StepOk;
+			recipe.StepError += RecipeOnStepError;
+
+			recipe.Finished += RecipeOnFinished;
+
+			uiManager.puzzle = puzzle;
+		}
+
+		private void RecipeOnFinished()
+		{
+			uiManager.ShowSuccess();
+		}
+
+		private void RecipeOnStepError()
+		{
+		}
+
+		private void Recipe_StepOk()
+		{
+		}
 
 		public void AddIngredient(Ingredient ingredient, Pot pot)
 		{

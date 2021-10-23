@@ -9,6 +9,10 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public RecipeDefinition definition;
 		public int stepIndex = 0;
 
+		public event Action StepOk;
+		public event Action StepError;
+		public event Action Finished;
+
 		public void AddIngredient(Ingredient ingredient, Pot pot)
 		{
 			var currentStep = definition.recipe[stepIndex];
@@ -17,12 +21,16 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			{
 				Debug.Log("StepCorretto");
 				stepIndex++;
+				if (stepIndex >= definition.recipe.Count)
+					Finished?.Invoke();
+
+				StepOk?.Invoke();
 			}
 			else
 			{
 				Debug.Log("StepErrato");
+				StepError?.Invoke();
 			}
-
 		}
 	}
 }

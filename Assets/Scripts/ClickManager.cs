@@ -15,29 +15,29 @@ namespace Assets.Scripts
 		// Update is called once per frame
 		void Update()
 		{
-			ViewRay();
+			//ViewRay();
 			if (Input.GetMouseButtonDown(0))
 				Click(Input.mousePosition);
 		}
 
 		private Vector3 hitpoint;
 
-		private void ViewRay()
-		{
-			var position = Input.mousePosition;
-			Ray ray = camera.ScreenPointToRay(position);
+		//private void ViewRay()
+		//{
+		//	var position = Input.mousePosition;
+		//	Ray ray = camera.ScreenPointToRay(position);
 
-			if (Physics.Raycast(ray, out RaycastHit hit))
-			{
-				LandMarkObject obj = hit.rigidbody?.gameObject?.GetComponent<LandMarkObject>();
-				if (obj == null)
-					return;
+		//	if (Physics.Raycast(ray, out RaycastHit hit))
+		//	{
+		//		LandMarkObject obj = hit.rigidbody?.gameObject?.GetComponent<LandMarkObject>();
+		//		if (obj == null)
+		//			return;
 
-				hitpoint = hit.point;
-			}
+		//		hitpoint = hit.point;
+		//	}
 
-			Debug.DrawRay(ray.origin, ray.direction * 1000);
-		}
+		//	Debug.DrawRay(ray.origin, ray.direction * 1000);
+		//}
 
 		private void Click(Vector3 mousePosition)
 		{
