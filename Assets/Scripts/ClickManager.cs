@@ -1,48 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickManager : MonoBehaviour
+namespace Assets.Scripts
 {
-	public Camera camera;
-	public LayerMask mapLayerMask;
-	public Player player;
-
-	// Update is called once per frame
-	void Update()
+	public class ClickManager : MonoBehaviour
 	{
-		ViewRay();
-		if (Input.GetMouseButtonDown(0))
-			Click(Input.mousePosition);
-	}
+		public Camera camera;
+		public Player player;
 
-	private Vector3 hitpoint;
 
-	private void ViewRay()
-	{
-		var position = Input.mousePosition;
-		Ray ray = camera.ScreenPointToRay(position);
-
-		if (Physics.Raycast(ray, out RaycastHit hit, mapLayerMask))
+		void Start()
 		{
-			hitpoint = hit.point;
 		}
 
-		Debug.DrawRay(ray.origin, ray.direction * 1000);
-	}
-
-	private void Click(Vector3 mousePosition)
-	{
-		Ray ray = camera.ScreenPointToRay(mousePosition);
-		if (Physics.Raycast(ray, out RaycastHit hit, mapLayerMask))
+		// Update is called once per frame
+		void Update()
 		{
-			player.MoveTo(hit.point);
+			ViewRay();
+			if (Input.GetMouseButtonDown(0))
+				Click(Input.mousePosition);
 		}
-	}
 
-	public void OnDrawGizmos()
-	{
-		Gizmos.color = Color.red;
-		Gizmos.DrawSphere(hitpoint, 0.3f);
+		private Vector3 hitpoint;
+
+		private void ViewRay()
+		{
+			var position = Input.mousePosition;
+			Ray ray = camera.ScreenPointToRay(position);
+
+			if (Physics.Raycast(ray, out RaycastHit hit))
+			{
+				LandMarkObject obj = hit.rigidbody?.gameObject?.GetComponent<LandMarkObject>();
+				if (obj == null)
+					return;
+
+				hitpoint = hit.point;
+			}
+
+			Debug.DrawRay(ray.origin, ray.direction * 1000);
+		}
+
+		private void Click(Vector3 mousePosition)
+		{
+			Ray ray = camera.ScreenPointToRay(mousePosition);
+			if (Physics.Raycast(ray, out RaycastHit hit))
+			{
+				LandMarkObject obj = hit.rigidbody?.gameObject?.GetComponent<LandMarkObject>();
+				if (obj == null)
+					return;
+
+				player.MoveTo(hit.point);
+			}
+		}
+
+		public void OnDrawGizmos()
+		{
+			Gizmos.color = Color.red;
+			Gizmos.DrawSphere(hitpoint, 0.3f);
+		}
 	}
 }

@@ -1,41 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Player : MonoBehaviour
+namespace Assets.Scripts
 {
-	[Range(1f, 25f)] public float speed = 10f;
-
-	private new Rigidbody rigidbody;
-	private NavMeshAgent agent;
-
-	// Start is called before the first frame update
-	void Awake()
+	public class Player : MonoBehaviour
 	{
-		rigidbody = this.GetComponent<Rigidbody>();
-		agent = this.GetComponent<NavMeshAgent>();
-	}
+		[Range(1f, 25f)] public float speed = 10f;
 
-	// Update is called once per frame
-	void Update()
-	{
-		//Movement();
-	}
+		private new Rigidbody rigidbody;
+		private NavMeshAgent agent;
 
-	//private void Movement()
-	//{
-	//	float horizontal = Input.GetAxis("Horizontal");
-	//	float vertical = Input.GetAxis("Vertical");
+		// Start is called before the first frame update
+		void Awake()
+		{
+			rigidbody = this.GetComponent<Rigidbody>();
+			agent = this.GetComponent<NavMeshAgent>();
+		}
 
-	//	Vector3 delta = new Vector3(vertical, 0, -horizontal) * speed;
-	//	Vector3 newPosition = rigidbody.position + delta;
+		// Update is called once per frame
+		void Update()
+		{
+			//Movement();
+		}
 
-	//	rigidbody.velocity = delta;
-	//}
+		//private void Movement()
+		//{
+		//	float horizontal = Input.GetAxis("Horizontal");
+		//	float vertical = Input.GetAxis("Vertical");
 
-	public void MoveTo(Vector3 position)
-	{
-		agent.SetDestination(position);
+		//	Vector3 delta = new Vector3(vertical, 0, -horizontal) * speed;
+		//	Vector3 newPosition = rigidbody.position + delta;
+
+		//	rigidbody.velocity = delta;
+		//}
+
+		public void MoveTo(Vector3 position)
+		{
+			agent.SetDestination(position);
+		}
 	}
 }
