@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Puzzles.Amatrice
 {
-	public class Draggable : MonoBehaviour
+	public class IngredientObject : MonoBehaviour
 	{
 		private bool isDragged;
 		private new Rigidbody rigidbody;

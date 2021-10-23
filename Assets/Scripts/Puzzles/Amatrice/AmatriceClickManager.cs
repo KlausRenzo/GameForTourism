@@ -8,13 +8,12 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public Camera camera;
 		private Vector3 hitpoint;
 
-		int tableLayer;
+		public LayerMask tableLayerMask;
 
-		[SerializeField] private Draggable activeDraggable;
+		[SerializeField] private IngredientObject activeIngredientObject;
 
 		void Awake()
 		{
-			tableLayer = 1 << LayerMask.NameToLayer("Map");
 		}
 	
 		void Update()
@@ -26,25 +25,24 @@ namespace Assets.Scripts.Puzzles.Amatrice
 
 		private void MouseMovement()
 		{
-			if (Input.GetMouseButtonUp(0) && activeDraggable != null)
+			if (Input.GetMouseButtonUp(0) && activeIngredientObject != null)
 			{
-				Debug.Log("StopDrag");
-				activeDraggable.StopDrag();
-				activeDraggable = null;
+				activeIngredientObject.StopDrag();
+				activeIngredientObject = null;
 			}
 
 			var position = Input.mousePosition;
 			Ray ray = camera.ScreenPointToRay(position);
 
-			if (Physics.Raycast(ray, out RaycastHit tableHit, tableLayer))
+			if (Physics.Raycast(ray, out RaycastHit tableHit, Mathf.Infinity, tableLayerMask.value))
 			{
 				tablePoint = tableHit.point;
 			}
 
-			// Draggable
+			// IngredientObject
 			if (Physics.Raycast(ray, out RaycastHit hit))
 			{
-				Draggable obj = hit.rigidbody?.gameObject?.GetComponent<Draggable>();
+				IngredientObject obj = hit.rigidbody?.gameObject?.GetComponent<IngredientObject>();
 				if (obj == null)
 					return;
 
@@ -52,8 +50,8 @@ namespace Assets.Scripts.Puzzles.Amatrice
 
 				if (Input.GetMouseButtonDown(0))
 				{
-					activeDraggable = obj;
-					activeDraggable.StartDrag();
+					activeIngredientObject = obj;
+					activeIngredientObject.StartDrag();
 				}
 			}
 
