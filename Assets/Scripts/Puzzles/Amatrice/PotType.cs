@@ -3,6 +3,7 @@
 	public enum PotType
 	{
 		Padella,
-		Pentola
+		Pentola,
+		Piatto
 	}
 }

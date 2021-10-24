@@ -17,11 +17,12 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		{
 			StartTimer(120);
 		}
+
 		public void StartTimer(int seconds)
 		{
 			currentTime = seconds;
 
-			if(timerCoroutine != null)
+			if (timerCoroutine != null)
 				StopCoroutine(timerCoroutine);
 
 			timerCoroutine = StartCoroutine(TimerCoroutine());
@@ -30,9 +31,20 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		private IEnumerator TimerCoroutine()
 		{
 			var wait = new WaitForSeconds(1);
+			var fasterWait = new WaitForSeconds(0.15f);
 
 			while (currentTime > 0)
 			{
+				if (timeReduction)
+				{
+					for (int i = 0; i < timeReductionAmount; i++)
+					{
+						yield return fasterWait;
+						currentTime--;
+						FormatTimer(currentTime);
+					}
+				}
+
 				yield return wait;
 				currentTime--;
 				FormatTimer(currentTime);

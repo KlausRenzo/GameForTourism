@@ -405,3 +405,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredient: {fileID: 0}
   hoverHeight: 0.75
+  yeetSpeed: 20
+  previousPosition: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}

@@ -16,7 +16,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		void Awake()
 		{
 		}
-	
+
 		void Update()
 		{
 			MouseMovement();
@@ -26,6 +26,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 
 		private void MouseMovement()
 		{
+			
 			if (Input.GetMouseButtonUp(0) && activeIngredientObject != null)
 			{
 				activeIngredientObject.StopDrag();
@@ -56,6 +57,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 				}
 			}
 		}
+
 
 		public void OnDrawGizmos()
 		{

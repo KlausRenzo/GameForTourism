@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets.Scripts.Puzzles.Amatrice
 {
@@ -15,6 +16,8 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public Ingredient ingredient;
 		[Range(0, 2)] [SerializeField] private float hoverHeight = 0.5f;
 
+		[Range(0, 20)] [SerializeField] private float yeetSpeed = 5;
+
 		// Start is called before the first frame update
 		void Start()
 		{
@@ -24,36 +27,37 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			hoverY = originalPosition.y + hoverHeight;
 		}
 
+		public Vector3 previousPosition;
+		public Vector3 velocity;
+
 		// Update is called once per frame
 		void Update()
 		{
 			if (!isDragged)
 				return;
 
-
 			var tablePosition = clickManager.tablePoint;
 			tablePosition.y = hoverY;
 
 			this.transform.position = tablePosition;
+
+			velocity = (tablePosition - previousPosition) * Time.deltaTime;
+			previousPosition = tablePosition;
 		}
-
-		//public void OnMouseEnter()
-		//{
-		//	transform.position += Vector3.up;
-		//}
-
 
 		public virtual void StartDrag()
 		{
 			isDragged = true;
-			rigidbody.isKinematic = true;
+			rigidbody.useGravity = false;
 		}
 
 		public virtual void StopDrag()
 		{
 			isDragged = false;
-			Debug.Log(rigidbody.velocity);
-			rigidbody.isKinematic = false;
+			rigidbody.useGravity = true;
+
+			Debug.Log(velocity * yeetSpeed);
+			rigidbody.velocity = velocity * yeetSpeed * 10;
 		}
 	}
 }
