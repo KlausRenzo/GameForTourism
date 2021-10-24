@@ -38,5 +38,10 @@ namespace Assets.Scripts.Puzzles.Amatrice
 
 			RemoveIngredient(ingredientObject.ingredient);
 		}
+
+		public void OnDrawGizmos()
+		{
+			Gizmos.DrawMesh(this.GetComponent<MeshFilter>().mesh, transform.position, transform.rotation);
+		}
 	}
 }
