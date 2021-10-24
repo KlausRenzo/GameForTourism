@@ -11,7 +11,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public LayerMask tableLayerMask;
 		public Timer timer;
 
-		[SerializeField] private IngredientObject activeIngredientObject;
+		[SerializeField] private Draggable activeIngredientObject;
 
 		void Awake()
 		{
@@ -26,7 +26,6 @@ namespace Assets.Scripts.Puzzles.Amatrice
 
 		private void MouseMovement()
 		{
-			
 			if (Input.GetMouseButtonUp(0) && activeIngredientObject != null)
 			{
 				activeIngredientObject.StopDrag();
@@ -44,16 +43,26 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			// IngredientObject
 			if (Physics.Raycast(ray, out RaycastHit hit))
 			{
-				IngredientObject obj = hit.rigidbody?.gameObject?.GetComponent<IngredientObject>();
-				if (obj == null)
-					return;
-
-				hitpoint = hit.point;
-
-				if (Input.GetMouseButtonDown(0))
+				Draggable obj = hit.rigidbody?.gameObject?.GetComponent<Draggable>();
+				var pot = hit.rigidbody?.gameObject?.GetComponent<Pot>();
+				if (pot != null)
 				{
-					activeIngredientObject = obj;
-					activeIngredientObject.StartDrag();
+					if (Input.GetMouseButtonDown(0))
+					{
+						var go = Instantiate(pot.savedIngredient);
+						activeIngredientObject = go.GetComponent<IngredientObject>();
+						activeIngredientObject.StartDrag();
+					}
+				}
+				else if(obj != null)
+				{
+					hitpoint = hit.point;
+
+					if (Input.GetMouseButtonDown(0))
+					{
+						activeIngredientObject = obj;
+						activeIngredientObject.StartDrag();
+					}
 				}
 			}
 		}

@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Security.Cryptography;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Puzzles.Amatrice
 {
@@ -7,15 +10,32 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public PotDefinition definition;
 
 		public RecipeManager recipeManager;
+		public GameObject savedIngredient;
 
-		public void AddIngredient(Ingredient ingredient)
+		public void AddIngredient(IngredientObject ingredient)
 		{
-			recipeManager.AddIngredient(ingredient, this);
+			var result = recipeManager.AddIngredient(ingredient.ingredient, this);
+
+			switch (result)
+			{
+				case IngredientResult.Corret:
+					ingredient.gameObject.SetActive(false);
+					break;
+				case IngredientResult.Bad:
+					ingredient.rigidbody.velocity = (transform.up + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f))) * 10;
+					break;
+				case IngredientResult.VeryBad:
+					break;
+				case IngredientResult.UltraBad:
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
 		}
 
-		public void RemoveIngredient(Ingredient ingredient)
+		public void RemoveIngredient(IngredientObject ingredient)
 		{
-			recipeManager.RemoveIngredient(ingredient, this);
+			recipeManager.RemoveIngredient(ingredient.ingredient, this);
 		}
 
 
@@ -26,7 +46,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			if (ingredientObject == null)
 				return;
 
-			AddIngredient(ingredientObject.ingredient);
+			AddIngredient(ingredientObject);
 		}
 
 		public void OnTriggerExit(Collider collider)
@@ -36,12 +56,12 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			if (ingredientObject == null)
 				return;
 
-			RemoveIngredient(ingredientObject.ingredient);
+			RemoveIngredient(ingredientObject);
 		}
 
 		public void OnDrawGizmos()
 		{
-			Gizmos.DrawMesh(this.GetComponent<MeshFilter>().mesh, transform.position, transform.rotation);
+			Gizmos.DrawMesh(this.GetComponent<MeshFilter>().sharedMesh, transform.position, transform.rotation);
 		}
 	}
 }

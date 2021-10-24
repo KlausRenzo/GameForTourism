@@ -5,16 +5,19 @@ using UnityEngine;
 
 namespace Assets.Scripts.Puzzles.Amatrice
 {
-	public class Timer : MonoBehaviour
+	public class Timer : Draggable
 	{
 		public TextMesh timeText;
 		private Coroutine timerCoroutine;
 		private int currentTime;
+		private bool timeReduction;
+		private int timeReductionAmount;
 
 		public event Action timeFinished;
 
-		public void Start()
+		protected override void Start()
 		{
+			base.Start();
 			StartTimer(120);
 		}
 
@@ -52,9 +55,6 @@ namespace Assets.Scripts.Puzzles.Amatrice
 
 			timeFinished?.Invoke();
 		}
-
-		private bool timeReduction;
-		private int timeReductionAmount;
 
 		public void RemoveTime(int seconds)
 		{

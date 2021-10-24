@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 namespace Assets.Scripts.Puzzles.Amatrice
@@ -10,12 +12,10 @@ namespace Assets.Scripts.Puzzles.Amatrice
 
 		public List<Ingredient> ingredients = new List<Ingredient>();
 		public UiManager uiManager;
+		public Timer timer;
 
 		public void Start()
 		{
-			recipe.StepOk += Recipe_StepOk;
-			recipe.StepError += RecipeOnStepError;
-
 			recipe.Finished += RecipeOnFinished;
 			recipe.Failed += RecipeOnFailed;
 
@@ -26,23 +26,21 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		{
 		}
 
-		private void RecipeOnStepError()
-		{
-		}
-
-		private void Recipe_StepOk()
-		{
-		}
-
 		private void RecipeOnFinished()
 		{
 			uiManager.ShowSuccess();
 		}
 
-		public void AddIngredient(Ingredient ingredient, Pot pot)
+		public IngredientResult AddIngredient(Ingredient ingredient, Pot pot)
 		{
 			ingredients.Add(ingredient);
-			recipe.AddIngredient(ingredient, pot);
+			var result = recipe.AddIngredient(ingredient, pot);
+
+			if (result == IngredientResult.VeryBad)
+			{
+				timer.RemoveTime(3);
+			}
+			return result;
 		}
 
 		public void RemoveIngredient(Ingredient ingredient, Pot pot)

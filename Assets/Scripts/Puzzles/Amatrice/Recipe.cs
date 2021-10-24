@@ -14,7 +14,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public event Action Finished;
 		public event Action Failed;
 
-		public void AddIngredient(Ingredient ingredient, Pot pot)
+		public IngredientResult AddIngredient(Ingredient ingredient, Pot pot)
 		{
 			var currentStep = definition.recipe[stepIndex];
 
@@ -26,12 +26,23 @@ namespace Assets.Scripts.Puzzles.Amatrice
 					Finished?.Invoke();
 
 				StepOk?.Invoke();
+
+				return IngredientResult.Corret;
 			}
 			else
 			{
 				Debug.Log("StepErrato");
 				StepError?.Invoke();
+				return IngredientResult.Bad;
 			}
 		}
+	}
+
+	public enum IngredientResult
+	{
+		Corret,
+		Bad,
+		VeryBad,
+		UltraBad
 	}
 }
