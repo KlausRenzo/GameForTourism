@@ -18,5 +18,10 @@ namespace Assets.Scripts
 
 			image.sprite = definition.sprite;
 		}
+
+		public void Hide()
+		{
+			Destroy(this.gameObject);
+		}
 	}
 }

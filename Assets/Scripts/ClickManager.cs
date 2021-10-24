@@ -4,51 +4,28 @@ namespace Assets.Scripts
 {
 	public class ClickManager : MonoBehaviour
 	{
-		public Camera camera;
-		public Player player;
+		private Player player;
+		private Vector3 hitpoint;
+		private Camera camera;
 
+	
 
-		void Start()
-		{
-		}
-
-		// Update is called once per frame
 		void Update()
 		{
-			//ViewRay();
-			if (Input.GetMouseButtonDown(0))
-				Click(Input.mousePosition);
+			MouseMovement(Input.mousePosition);
 		}
 
-		private Vector3 hitpoint;
-
-		//private void ViewRay()
-		//{
-		//	var position = Input.mousePosition;
-		//	Ray ray = camera.ScreenPointToRay(position);
-
-		//	if (Physics.Raycast(ray, out RaycastHit hit))
-		//	{
-		//		LandMarkObject obj = hit.rigidbody?.gameObject?.GetComponent<LandMarkObject>();
-		//		if (obj == null)
-		//			return;
-
-		//		hitpoint = hit.point;
-		//	}
-
-		//	Debug.DrawRay(ray.origin, ray.direction * 1000);
-		//}
-
-		private void Click(Vector3 mousePosition)
+		private void MouseMovement(Vector3 mousePosition)
 		{
-			Ray ray = camera.ScreenPointToRay(mousePosition);
+			Ray ray = GameManager.Instance.activeCamera.camera.ScreenPointToRay(mousePosition);
 			if (Physics.Raycast(ray, out RaycastHit hit))
 			{
 				LandMarkObject obj = hit.rigidbody?.gameObject?.GetComponent<LandMarkObject>();
 				if (obj == null)
 					return;
 
-				player.MoveTo(hit.point);
+				if (Input.GetMouseButtonDown(0))
+					GameManager.Instance.player.MoveTo(hit.point);
 			}
 		}
 

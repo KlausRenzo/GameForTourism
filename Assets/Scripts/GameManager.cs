@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Assets.Scripts;
 using Assets.Scripts.Puzzles;
 using UnityEngine;
@@ -11,7 +10,11 @@ public class GameManager : MonoBehaviour
 {
 	public Player player;
 	public List<LandMarkObject> landmarks = new List<LandMarkObject>();
+	public PuzzleDefinition puzzle;
+	public GameUiManager gameUiManager;
+	public ActiveCamera activeCamera;
 
+	private Vector3 playerPosition;
 	public static GameManager Instance { get; private set; }
 
 	void Awake()
@@ -28,8 +31,6 @@ public class GameManager : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 
-	public PuzzleDefinition puzzle;
-
 	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.P))
@@ -38,8 +39,6 @@ public class GameManager : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.S))
 			PuzzleSuccess(puzzle);
 	}
-
-	private Vector3 playerPosition;
 
 	public void LoadPuzzle(PuzzleDefinition infoPuzzle)
 	{
@@ -58,18 +57,16 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator PuzzleSuccessCoroutine(PuzzleDefinition infoPuzzle)
 	{
-		SceneManager.LoadScene("Map");
-		yield return new WaitForSeconds(0.2f);
-
-		player.transform.position = playerPosition;
+		var asyncOperation = SceneManager.LoadSceneAsync("Map");
+		yield return new WaitUntil(() => asyncOperation.isDone);
 
 		var landmark = landmarks.First(x => x.info == infoPuzzle.landMark);
-		landmark.SetComplete();
+		var landmarkPosition = landmark.transform.position;
+		player.transform.position = landmarkPosition + (playerPosition - landmarkPosition) * 2;
 
+		landmark.SetComplete();
 		ShowReward(infoPuzzle.reward);
 	}
-
-	public GameUiManager gameUiManager;
 
 	private void ShowReward(RewardDefinition infoPuzzleReward)
 	{

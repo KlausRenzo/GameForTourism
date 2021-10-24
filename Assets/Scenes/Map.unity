@@ -170,6 +170,7 @@ MonoBehaviour:
   landmarks: []
   puzzle: {fileID: 11400000, guid: ce6c332a13743304d9ea89b84b5c9229, type: 2}
   gameUiManager: {fileID: 1804108514}
+  activeCamera: {fileID: 0}
 --- !u!1 &173794290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,6 +1057,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1128,6 +1130,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 41.95, y: 54.25, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58cdb5d4c3ab5ca458702605de3f03bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!1 &1092557965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4777784206771959224, guid: 14fa22cebbf7da54f80d0f9e3161d22b, type: 3}
@@ -2437,8 +2452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b9d73c20885f3469df6fb6179f5f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 963194227}
-  player: {fileID: 2096434222}
 --- !u!4 &2132010893
 Transform:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4777784206771959220}
   - component: {fileID: 4777784206771959221}
   - component: {fileID: 4777784206771959222}
+  - component: {fileID: 575095174625194760}
   m_Layer: 0
   m_Name: LandMark
   m_TagString: Untagged
@@ -112,6 +113,25 @@ MonoBehaviour:
   info: {fileID: 11400000, guid: 4fb4ebb927d002c4796a25de6fb4e6f8, type: 2}
   completeMaterial: {fileID: 2100000, guid: 762e85a5503ae774e9b49eca0443bbc3, type: 2}
   isComplete: 0
+--- !u!95 &575095174625194760
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4777784206771959224}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d7b69b882f8e5804bb43732c7c905c50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8064156607261963421
 GameObject:
   m_ObjectHideFlags: 0
