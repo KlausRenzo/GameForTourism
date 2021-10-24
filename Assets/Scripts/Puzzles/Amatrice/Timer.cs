@@ -34,7 +34,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		private IEnumerator TimerCoroutine()
 		{
 			var wait = new WaitForSeconds(1);
-			var fasterWait = new WaitForSeconds(0.15f);
+			var fasterWait = new WaitForSeconds(0.1f);
 
 			while (currentTime > 0)
 			{
@@ -46,6 +46,8 @@ namespace Assets.Scripts.Puzzles.Amatrice
 						currentTime--;
 						FormatTimer(currentTime);
 					}
+
+					timeReduction = false;
 				}
 
 				yield return wait;
@@ -58,7 +60,8 @@ namespace Assets.Scripts.Puzzles.Amatrice
 
 		public void RemoveTime(int seconds)
 		{
-			currentTime -= seconds;
+			timeReduction = true;
+			timeReductionAmount = seconds;
 		}
 
 		private void FormatTimer(int seconds)

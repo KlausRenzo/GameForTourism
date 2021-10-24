@@ -36,7 +36,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			ingredients.Add(ingredient);
 			var result = recipe.AddIngredient(ingredient, pot);
 
-			if (result == IngredientResult.VeryBad)
+			if (result == IngredientResult.Bad)
 			{
 				timer.RemoveTime(3);
 			}
