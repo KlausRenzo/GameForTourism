@@ -1619,7 +1619,6 @@ MonoBehaviour:
   yeetSpeed: 0
   previousPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
-  ingredient: {fileID: 0}
   ricettarioModel: {fileID: 899080474}
   ricettarioPosition: {x: 0, y: 0, z: 0}
   ricettarioScale: {x: 0, y: 0, z: 0}
@@ -1630,8 +1629,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -1648,7 +1647,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  duration: 5
+  duration: 0.5
 --- !u!1 &787590821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,7 +1943,7 @@ BoxCollider:
   m_GameObject: {fileID: 899080474}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2005,8 +2004,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899080474}
   m_LocalRotation: {x: -0.4878596, y: 0, z: 0, w: 0.8729221}
-  m_LocalPosition: {x: 0.091, y: 2.25, z: -3.41}
-  m_LocalScale: {x: 0.59, y: 0.0733134, z: 1.049197}
+  m_LocalPosition: {x: 0.091, y: 2.92, z: -3.3}
+  m_LocalScale: {x: 1.099996, y: 0.1366855, z: 1.9561229}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15

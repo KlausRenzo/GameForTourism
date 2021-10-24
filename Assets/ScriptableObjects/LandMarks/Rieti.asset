@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Rieti
   m_EditorClassIdentifier: 
   name: Rieti
+  icon: {fileID: 21300000, guid: 674cc54c4da38974f9575b57924627ba, type: 3}
+  finishedIcon: {fileID: 21300000, guid: d93c486d774bda244ba1e0aca411f65f, type: 3}
+  puzzle: {fileID: 0}

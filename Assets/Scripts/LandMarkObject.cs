@@ -6,6 +6,7 @@ namespace Assets.Scripts
 	public class LandMarkObject : MonoBehaviour
 	{
 		private TextMesh text;
+		private SpriteRenderer spriteRenderer;
 		private Animator animator;
 
 		public LandMark info;
@@ -16,11 +17,13 @@ namespace Assets.Scripts
 		{
 			text = this.GetComponentInChildren<TextMesh>();
 			animator = this.GetComponent<Animator>();
+			spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
 		}
 
 		void Start()
 		{
 			text.text = info.name;
+			spriteRenderer.sprite = info.icon;
 
 			GameManager.Instance.RegisterLandmark(this);
 		}
@@ -30,10 +33,11 @@ namespace Assets.Scripts
 		{
 			var camera = Camera.main;
 			text.transform.LookAt(camera.transform);
+			spriteRenderer.transform.LookAt(camera.transform);
 
-			
+
 			//Debug
-			if(Input.GetKeyDown(KeyCode.H))
+			if (Input.GetKeyDown(KeyCode.H))
 				SetComplete();
 		}
 
@@ -41,7 +45,7 @@ namespace Assets.Scripts
 		{
 			animator.SetBool("Highlight", true);
 		}
-		
+
 		public void OnMouseExit()
 		{
 			animator.SetBool("Highlight", false);
@@ -58,11 +62,10 @@ namespace Assets.Scripts
 			{
 				GameManager.Instance.LoadPuzzle(info.puzzle);
 			}
-
 		}
 
 		public bool isComplete;
-		
+
 		public void SetComplete()
 		{
 			isComplete = true;

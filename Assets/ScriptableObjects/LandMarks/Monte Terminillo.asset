@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Monte Terminillo
   m_EditorClassIdentifier: 
   name: Monte Terminillo
+  icon: {fileID: 21300000, guid: 15c49bcee044f1949a881edd80febc48, type: 3}
+  finishedIcon: {fileID: 21300000, guid: ea621630287c37f4499221ee1d981df6, type: 3}
+  puzzle: {fileID: 0}

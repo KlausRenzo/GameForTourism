@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Amatrice
   m_EditorClassIdentifier: 
   name: Amatrice
+  icon: {fileID: 21300000, guid: e86ba7b9424ab9b4780fd0f3aafb7025, type: 3}
+  finishedIcon: {fileID: 21300000, guid: 26fffb47925d58d4682f3f292834c27f, type: 3}
   puzzle: {fileID: 11400000, guid: ce6c332a13743304d9ea89b84b5c9229, type: 2}

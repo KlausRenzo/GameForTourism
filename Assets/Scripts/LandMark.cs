@@ -9,6 +9,7 @@ namespace Assets.Scripts
 	public class LandMark : ScriptableObject
 	{
 		public string name;
+		public Sprite icon, finishedIcon;
 		public PuzzleDefinition puzzle;
 	}
 }

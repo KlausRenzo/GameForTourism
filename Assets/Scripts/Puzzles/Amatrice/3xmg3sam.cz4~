@@ -15,7 +15,6 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public AnimationCurve curve;
 
 		private Coroutine coroutine;
-		public float duration;
 		private MeshRenderer renderer;
 
 		private void Awake()
@@ -24,7 +23,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			ricettarioScale = ricettarioModel.transform.localScale;
 			ricettarioRotation = ricettarioModel.transform.rotation;
 
-			ricettarioModel.transform.position = transform.position;
+			ricettarioModel.transform.position = this.transform.position;
 			ricettarioModel.transform.localScale = transform.localScale;
 			ricettarioModel.transform.rotation = transform.rotation;
 
@@ -36,7 +35,6 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		{
 			if (coroutine != null)
 				StopCoroutine(coroutine);
-
 			coroutine = StartCoroutine(ShowCoroutine());
 		}
 
@@ -44,20 +42,24 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		{
 			ricettarioModel.SetActive(true);
 
+			ricettarioModel.transform.position = this.transform.position;
+			ricettarioModel.transform.localScale = this.transform.localScale;
+
 			var startTime = Time.time;
 
 			while (Time.time < startTime + duration)
 			{
 				var value = curve.Evaluate((Time.time - startTime) / duration);
-
-				ricettarioModel.transform.position = Vector3.Lerp(transform.position, ricettarioPosition, value);
-				ricettarioModel.transform.localScale = Vector3.Lerp(transform.localScale, ricettarioScale, value);
-				ricettarioModel.transform.rotation = Quaternion.Lerp(transform.rotation, ricettarioRotation, value);
+				Debug.Log(value);
+				ricettarioModel.transform.position = Vector3.Lerp(ricettarioModel.transform.position, ricettarioPosition, value);
+				ricettarioModel.transform.localScale = Vector3.Lerp(ricettarioModel.transform.localScale, ricettarioScale, value);
+				ricettarioModel.transform.rotation = Quaternion.Lerp(ricettarioModel.transform.rotation, ricettarioRotation, value);
 
 				yield return null;
 			}
 		}
 
+		public float duration;
 		private IEnumerator HideCoroutine()
 		{
 			var startTime = Time.time;
@@ -66,9 +68,9 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			{
 				var value = curve.Evaluate((Time.time - startTime) / duration);
 
-				ricettarioModel.transform.position = Vector3.Lerp(ricettarioPosition, transform.position, value);
-				ricettarioModel.transform.localScale = Vector3.Lerp(ricettarioScale, transform.localScale, value);
-				ricettarioModel.transform.rotation = Quaternion.Lerp(ricettarioRotation, transform.rotation, value);
+				ricettarioModel.transform.position = Vector3.Lerp(ricettarioModel.transform.position, transform.position, value);
+				ricettarioModel.transform.localScale = Vector3.Lerp(ricettarioModel.transform.localScale, transform.localScale, value);
+				ricettarioModel.transform.rotation = Quaternion.Lerp(ricettarioModel.transform.rotation, transform.rotation, value);
 
 				yield return null;
 			}
