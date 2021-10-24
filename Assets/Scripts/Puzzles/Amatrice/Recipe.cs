@@ -12,6 +12,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public event Action StepOk;
 		public event Action StepError;
 		public event Action Finished;
+		public event Action Failed;
 
 		public void AddIngredient(Ingredient ingredient, Pot pot)
 		{

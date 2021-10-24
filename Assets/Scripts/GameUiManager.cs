@@ -1,21 +1,22 @@
-using System.Threading;
-using Assets.Scripts;
 using UnityEngine;
 
-public class GameUiManager : MonoBehaviour
+namespace Assets.Scripts
 {
-	public GameObject rewardPrefab;
-	public GameObject rewardPanel;
-
-	public void Start()
+	public class GameUiManager : MonoBehaviour
 	{
-		GameManager.Instance.gameUiManager = this;
-	}
+		public GameObject rewardPrefab;
+		public GameObject rewardPanel;
 
-	public void ShowReward(RewardDefinition infoPuzzleReward)
-	{
-		var newReward = Instantiate(rewardPrefab, rewardPanel.transform);
+		public void Start()
+		{
+			GameManager.Instance.gameUiManager = this;
+		}
 
-		newReward.GetComponent<Reward>().Show(infoPuzzleReward);
+		public void ShowReward(RewardDefinition infoPuzzleReward)
+		{
+			var newReward = Instantiate(rewardPrefab, rewardPanel.transform);
+
+			newReward.GetComponent<Reward>().Show(infoPuzzleReward);
+		}
 	}
 }

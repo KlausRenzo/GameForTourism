@@ -17,13 +17,13 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			recipe.StepError += RecipeOnStepError;
 
 			recipe.Finished += RecipeOnFinished;
+			recipe.Failed += RecipeOnFailed;
 
 			uiManager.puzzle = puzzle;
 		}
 
-		private void RecipeOnFinished()
+		private void RecipeOnFailed()
 		{
-			uiManager.ShowSuccess();
 		}
 
 		private void RecipeOnStepError()
@@ -32,6 +32,11 @@ namespace Assets.Scripts.Puzzles.Amatrice
 
 		private void Recipe_StepOk()
 		{
+		}
+
+		private void RecipeOnFinished()
+		{
+			uiManager.ShowSuccess();
 		}
 
 		public void AddIngredient(Ingredient ingredient, Pot pot)

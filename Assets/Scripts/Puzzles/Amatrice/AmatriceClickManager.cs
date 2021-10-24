@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts.Puzzles.Amatrice
@@ -7,8 +8,8 @@ namespace Assets.Scripts.Puzzles.Amatrice
 	{
 		public Camera camera;
 		private Vector3 hitpoint;
-
 		public LayerMask tableLayerMask;
+		public Timer timer;
 
 		[SerializeField] private IngredientObject activeIngredientObject;
 
@@ -54,8 +55,6 @@ namespace Assets.Scripts.Puzzles.Amatrice
 					activeIngredientObject.StartDrag();
 				}
 			}
-
-			
 		}
 
 		public void OnDrawGizmos()

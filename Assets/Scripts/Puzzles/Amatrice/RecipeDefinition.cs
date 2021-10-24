@@ -8,6 +8,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 	public class RecipeDefinition : ScriptableObject
 	{
 		public string name;
+		public int timeInSecond;
 
 		public List<RecipeStep> recipe = new List<RecipeStep>();
 	}

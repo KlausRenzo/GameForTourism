@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Pasta Amatriciana
   m_EditorClassIdentifier: 
   name: Pasta all'Amatriciana
+  timeInSecond: 30
   recipe:
   - ingredient: 0
     pot: 1

@@ -52,6 +52,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public virtual void StopDrag()
 		{
 			isDragged = false;
+			Debug.Log(rigidbody.velocity);
 			rigidbody.isKinematic = false;
 		}
 	}
