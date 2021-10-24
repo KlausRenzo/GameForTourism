@@ -60,7 +60,10 @@ namespace Assets.Scripts
 
 			if (collider.gameObject.GetComponent<Player>())
 			{
-				GameManager.Instance.LoadPuzzle(info.puzzle);
+				if (info.puzzle == null)
+					GameManager.Instance.LoadComingSoon(info);
+				else
+					GameManager.Instance.LoadPuzzle(info.puzzle);
 			}
 		}
 

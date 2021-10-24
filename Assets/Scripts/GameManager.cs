@@ -81,5 +81,10 @@ namespace Assets.Scripts
 
 			landmarks.Add(landmark);
 		}
+
+		public void LoadComingSoon(LandMark landMark)
+		{
+			gameUiManager.ShowComingSoon(landMark);
+		}
 	}
 }
