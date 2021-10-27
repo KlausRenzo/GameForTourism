@@ -32,8 +32,8 @@ namespace Assets.Scripts
 		void Update()
 		{
 			var camera = Camera.main;
-			text.transform.LookAt(camera.transform);
-			spriteRenderer.transform.LookAt(camera.transform);
+			//text.transform.LookAt(camera.transform);
+			//spriteRenderer.transform.LookAt(camera.transform);
 
 
 			//Debug
@@ -46,12 +46,12 @@ namespace Assets.Scripts
 			animator.SetBool("Highlight", true);
 		}
 
-		public void OnMouseExit()
-		{
-			animator.SetBool("Highlight", false);
-		}
+        public void OnMouseExit()
+        {
+            animator.SetBool("Highlight", false);
+        }
 
-		public void OnTriggerEnter(Collider collider)
+        public void OnTriggerEnter(Collider collider)
 		{
 			if (isComplete)
 			{
