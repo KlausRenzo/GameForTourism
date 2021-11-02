@@ -25,7 +25,7 @@ namespace Assets.Scripts
 					return;
 
 				if (Input.GetMouseButtonDown(0))
-					GameManager.Instance.player.MoveTo(hit.point);
+					GameManager.Instance.player.MoveTo(obj);
 			}
 		}
 

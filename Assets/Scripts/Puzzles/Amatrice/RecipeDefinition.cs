@@ -9,14 +9,5 @@ namespace Assets.Scripts.Puzzles.Amatrice
 	{
 		public string name;
 		public int timeInSecond;
-
-		public List<RecipeStep> recipe = new List<RecipeStep>();
-	}
-
-	[Serializable]
-	public class RecipeStep
-	{
-		public IngredientType ingredient;
-		public PotType pot;
 	}
 }

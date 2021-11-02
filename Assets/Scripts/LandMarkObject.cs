@@ -46,20 +46,23 @@ namespace Assets.Scripts
 			animator.SetBool("Highlight", true);
 		}
 
-        public void OnMouseExit()
-        {
-            animator.SetBool("Highlight", false);
-        }
+		public void OnMouseExit()
+		{
+			animator.SetBool("Highlight", false);
+		}
 
-        public void OnTriggerEnter(Collider collider)
+		public void OnTriggerEnter(Collider collider)
 		{
 			if (isComplete)
 			{
 				return;
 			}
 
-			if (collider.gameObject.GetComponent<Player>())
+			var player = collider.gameObject.GetComponent<Player>();
+			if (player != null && player.landMarkDestination == this.info)
 			{
+				player.landMarkDestination = null;
+
 				if (info.puzzle == null)
 					GameManager.Instance.LoadComingSoon(info);
 				else

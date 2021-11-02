@@ -7,6 +7,7 @@ namespace Assets.Scripts
 	{
 		private new Rigidbody rigidbody;
 		private NavMeshAgent agent;
+		public LandMark landMarkDestination;
 
 		void Awake()
 		{
@@ -19,9 +20,10 @@ namespace Assets.Scripts
 			GameManager.Instance.player = this;
 		}
 
-		public void MoveTo(Vector3 position)
+		public void MoveTo(LandMarkObject landMark)
 		{
-			agent.SetDestination(position);
+			landMarkDestination = landMark.info;
+			agent.SetDestination(landMark.transform.position);
 		}
 	}
 }

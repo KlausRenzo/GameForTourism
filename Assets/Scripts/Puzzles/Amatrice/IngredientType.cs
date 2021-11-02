@@ -4,10 +4,12 @@
 	{
 		Acqua,
 		Spaghetti,
+		SpaghettiCotti,
 		Pomodoro,
 		Guanciale,
 		Vino,
 		Pecorino,
-		SalePepe
+		SalePepe,
+		Matriciana
 	}
 }
