@@ -10,7 +10,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public TextMeshPro timeText;
 		private Coroutine timerCoroutine;
 		private Coroutine blinkCoroutine;
-		private int currentTime;
+		public int currentTime;
 		private bool timeReduction;
 		private int timeReductionAmount;
 

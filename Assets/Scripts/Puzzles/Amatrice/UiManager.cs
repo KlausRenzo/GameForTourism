@@ -31,7 +31,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 
 		public void ShowFail()
 		{
-			animator.SetTrigger("Fail");
+			animator.SetTrigger("Lose");
 		}
 	}
 }

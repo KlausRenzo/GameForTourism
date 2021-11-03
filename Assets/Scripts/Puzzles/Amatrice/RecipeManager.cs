@@ -31,7 +31,13 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public void Start()
 		{
 			uiManager.puzzle = puzzle;
+			timer.timeFinished += TimerOntimeFinished;
 			CreateRecipe();
+		}
+
+		private void TimerOntimeFinished()
+		{
+			StartCoroutine(LoseCoroutine());
 		}
 
 		private void CreateRecipe()
@@ -122,6 +128,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 
 		private IEnumerator LoseCoroutine()
 		{
+			timer.Stop();
 			yield return new WaitForSeconds(1);
 			uiManager.ShowFail();
 		}
