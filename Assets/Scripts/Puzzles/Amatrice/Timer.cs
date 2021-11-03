@@ -7,13 +7,15 @@ namespace Assets.Scripts.Puzzles.Amatrice
 {
 	public class Timer : Draggable
 	{
-		public TextMesh timeText;
+		public TextMeshPro timeText;
 		private Coroutine timerCoroutine;
+		private Coroutine blinkCoroutine;
 		private int currentTime;
 		private bool timeReduction;
 		private int timeReductionAmount;
 
 		public event Action timeFinished;
+		private bool stopped;
 
 		protected override void Start()
 		{
@@ -29,6 +31,28 @@ namespace Assets.Scripts.Puzzles.Amatrice
 				StopCoroutine(timerCoroutine);
 
 			timerCoroutine = StartCoroutine(TimerCoroutine());
+			blinkCoroutine = StartCoroutine(BlinkCoroutine());
+		}
+
+		private IEnumerator BlinkCoroutine()
+		{
+			var wait = new WaitForSeconds(1f / 2);
+			var fasterWait = new WaitForSeconds(0.1f);
+
+			while (true)
+			{
+				timeText.enabled = !timeText.enabled;
+				if (timeReduction)
+				{
+					yield return fasterWait;
+				}
+				else
+				{
+					if(!stopped)
+						timeText.enabled = true;
+					yield return wait;
+				}
+			}
 		}
 
 		private IEnumerator TimerCoroutine()
@@ -58,6 +82,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			timeFinished?.Invoke();
 		}
 
+
 		public void RemoveTime(int seconds)
 		{
 			timeReduction = true;
@@ -69,6 +94,12 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			var timeSpan = TimeSpan.FromSeconds(seconds);
 
 			timeText.text = timeSpan.ToString(@"mm\:ss");
+		}
+
+		public void Stop()
+		{
+			StopCoroutine(timerCoroutine);
+			stopped = true;
 		}
 	}
 }

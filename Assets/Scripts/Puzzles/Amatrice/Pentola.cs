@@ -4,10 +4,15 @@ namespace Assets.Scripts.Puzzles.Amatrice
 {
 	public class Pentola : Pot
 	{
-		public GameObject waterModel;
-		public void SetWaterPot()
+		public void AddSpaghetti()
 		{
-			waterModel.SetActive(true);
+			GetComponent<Animator>().SetTrigger("Next");
+			canGetIngredient = true;
+		}
+
+		public void AddWater()
+		{
+			GetComponent<Animator>().SetTrigger("Next");
 		}
 	}
 }

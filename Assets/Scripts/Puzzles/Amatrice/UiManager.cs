@@ -28,5 +28,10 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		{
 			GameManager.Instance.PuzzleSuccess(puzzle);
 		}
+
+		public void ShowFail()
+		{
+			animator.SetTrigger("Fail");
+		}
 	}
 }

@@ -43,18 +43,28 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			// IngredientObject
 			if (Physics.Raycast(ray, out RaycastHit hit))
 			{
-				Draggable obj = hit.rigidbody?.gameObject?.GetComponent<Draggable>();
-				var pot = hit.rigidbody?.gameObject?.GetComponent<Pot>();
+				Draggable obj = hit.transform.gameObject?.GetComponent<Draggable>();
+				var pot = hit.transform.gameObject.gameObject?.GetComponent<Pot>();
 				if (pot != null)
 				{
+					Debug.Log(pot);
 					if (Input.GetMouseButtonDown(0))
 					{
-						var go = Instantiate(pot.savedIngredient);
+						if (!pot.canGetIngredient || pot.ingredient == null)
+						{
+							return;
+						}
+
+						pot.canGetIngredient = false;
+
+						var go = Instantiate(pot.ingredient, pot.transform.position, Quaternion.identity);
 						activeIngredientObject = go.GetComponent<IngredientObject>();
+						
 						activeIngredientObject.StartDrag();
+						pot.GetComponent<Animator>().SetTrigger("Next");
 					}
 				}
-				else if(obj != null)
+				else if (obj != null)
 				{
 					hitpoint = hit.point;
 

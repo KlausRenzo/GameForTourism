@@ -10,7 +10,6 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public PotDefinition definition;
 
 		public RecipeManager recipeManager;
-		public GameObject savedIngredient;
 
 		public void AddIngredient(IngredientObject ingredient)
 		{
@@ -33,11 +32,8 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			}
 		}
 
-		public void RemoveIngredient(IngredientObject ingredient)
-		{
-			recipeManager.RemoveIngredient(ingredient.ingredient, this);
-		}
-
+		public bool canGetIngredient;
+		public GameObject ingredient;
 
 		public void OnTriggerEnter(Collider collider)
 		{
@@ -49,19 +45,14 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			AddIngredient(ingredientObject);
 		}
 
-		public void OnTriggerExit(Collider collider)
-		{
-			var ingredientObject = collider.gameObject.GetComponent<IngredientObject>();
-
-			if (ingredientObject == null)
-				return;
-
-			RemoveIngredient(ingredientObject);
-		}
-
 		public void OnDrawGizmos()
 		{
 			Gizmos.DrawMesh(this.GetComponent<MeshFilter>().sharedMesh, transform.position, transform.rotation);
+		}
+
+		public void EnableAmatriciana()
+		{
+			canGetIngredient = true;
 		}
 	}
 }

@@ -5,7 +5,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 	public class Draggable : MonoBehaviour
 	{
 		private bool isDragged;
-		public new Rigidbody rigidbody;
+		[HideInInspector] public new Rigidbody rigidbody;
 		private AmatriceClickManager clickManager;
 
 		private float hoverY;
@@ -39,6 +39,11 @@ namespace Assets.Scripts.Puzzles.Amatrice
 
 		public virtual void StartDrag()
 		{
+			clickManager = FindObjectOfType<AmatriceClickManager>();
+			rigidbody = this.GetComponent<Rigidbody>();
+			originalPosition = this.transform.position;
+			hoverY = originalPosition.y + hoverHeight;
+
 			isDragged = true;
 			rigidbody.useGravity = false;
 		}

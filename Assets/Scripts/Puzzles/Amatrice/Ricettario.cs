@@ -11,6 +11,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		public Vector3 ricettarioPosition;
 		public Vector3 ricettarioScale;
 		public Quaternion ricettarioRotation;
+		public Camera camera;
 
 		public AnimationCurve curve;
 
