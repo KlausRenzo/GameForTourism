@@ -32,15 +32,6 @@ namespace Assets.Scripts
 			DontDestroyOnLoad(gameObject);
 		}
 
-		void Update()
-		{
-			if (Input.GetKeyDown(KeyCode.P))
-				LoadPuzzle(puzzle);
-
-			if (Input.GetKeyDown(KeyCode.S))
-				PuzzleSuccess(puzzle);
-		}
-
 		public void LoadPuzzle(PuzzleDefinition infoPuzzle)
 		{
 			if (infoPuzzle == null)
@@ -51,12 +42,12 @@ namespace Assets.Scripts
 			SceneManager.LoadScene(infoPuzzle.sceneName);
 		}
 
-		public void PuzzleSuccess(PuzzleDefinition infoPuzzle)
+		public void PuzzleEnded(PuzzleDefinition infoPuzzle, bool status)
 		{
-			StartCoroutine(PuzzleSuccessCoroutine(infoPuzzle));
+			StartCoroutine(PuzzleEndedCoroutine(infoPuzzle, status));
 		}
 
-		private IEnumerator PuzzleSuccessCoroutine(PuzzleDefinition infoPuzzle)
+		private IEnumerator PuzzleEndedCoroutine(PuzzleDefinition infoPuzzle, bool status)
 		{
 			var asyncOperation = SceneManager.LoadSceneAsync("Map");
 			yield return new WaitUntil(() => asyncOperation.isDone);
@@ -65,8 +56,11 @@ namespace Assets.Scripts
 			var landmarkPosition = landmark.transform.position;
 			player.transform.position = landmarkPosition + (playerPosition - landmarkPosition) * 2;
 
-			landmark.SetComplete();
-			ShowReward(infoPuzzle.reward);
+			if (status)
+			{
+				landmark.SetComplete();
+				ShowReward(infoPuzzle.reward);
+			}
 		}
 
 		private void ShowReward(RewardDefinition infoPuzzleReward)

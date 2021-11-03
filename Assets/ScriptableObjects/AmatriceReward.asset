@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AmatriceReward
   m_EditorClassIdentifier: 
   name: Amatrice
-  description: PROVA DI DESCRIZIONE
+  description: You WON!
   sprite: {fileID: 21300000, guid: 6564385da38f0674e9e6bad2c6c5dce1, type: 3}

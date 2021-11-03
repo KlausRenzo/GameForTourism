@@ -24,9 +24,9 @@ namespace Assets.Scripts.Puzzles.Amatrice
 			animator.SetTrigger("Victory");
 		}
 
-		public void GoToMap()
+		public void GoToMap(bool success)
 		{
-			GameManager.Instance.PuzzleSuccess(puzzle);
+			GameManager.Instance.PuzzleEnded(puzzle, success);
 		}
 
 		public void ShowFail()

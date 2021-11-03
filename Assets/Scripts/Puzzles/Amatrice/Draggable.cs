@@ -9,7 +9,7 @@ namespace Assets.Scripts.Puzzles.Amatrice
 		private AmatriceClickManager clickManager;
 
 		private float hoverY;
-		private Vector3 originalPosition;
+		public Vector3 originalPosition;
 
 		[Range(0, 2)] [SerializeField] private float hoverHeight = 0.5f;
 

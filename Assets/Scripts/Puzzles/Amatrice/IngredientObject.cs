@@ -7,7 +7,6 @@ namespace Assets.Scripts.Puzzles.Amatrice
 	{
 		public Ingredient ingredient;
 
-		[HideInInspector] public Vector3 originalPosition;
 		[HideInInspector] public Vector3 originalScale;
 		[HideInInspector] public Quaternion originalRotation;
 
