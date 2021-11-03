@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace Assets.Scripts.Puzzles.Amatrice

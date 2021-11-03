@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Puzzles.Amatrice
 {

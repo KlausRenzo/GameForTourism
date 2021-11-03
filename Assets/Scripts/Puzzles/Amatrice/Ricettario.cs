@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Diagnostics;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
-using Debug = UnityEngine.Debug;
 
 namespace Assets.Scripts.Puzzles.Amatrice
 {
