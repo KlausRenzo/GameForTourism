@@ -1859,7 +1859,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Non sara' buonissima ma almeno e' Matriciana!
+  m_text: 'GREAT!
+
+    YOU COOKED A TASTY
+
+    PASTA ALL''amatriciana!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bf559e60e9e6fb94c9fd09eef2168726, type: 2}
   m_sharedMaterial: {fileID: -5212959856393495495, guid: bf559e60e9e6fb94c9fd09eef2168726, type: 2}
@@ -2049,7 +2053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
+  m_Color: {r: 0.81568635, g: 0.5137255, b: 0.44705886, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2311,7 +2315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Torna alla mappa
+  m_text: Back to map
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bf559e60e9e6fb94c9fd09eef2168726, type: 2}
   m_sharedMaterial: {fileID: -5212959856393495495, guid: bf559e60e9e6fb94c9fd09eef2168726, type: 2}
@@ -2865,7 +2869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8}
+  m_Color: {r: 0.9215687, g: 0.7607844, b: 0.57254905, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4300,7 +4304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8}
+  m_Color: {r: 0.8156863, g: 0.5137255, b: 0.44705883, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4520,7 +4524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  m_Color: {r: 0.92156863, g: 0.7607843, b: 0.57254905, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4875,7 +4879,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hai perso...
+  m_text: 'OH NO!
+
+    YOU DIDN''T MAKE IT :(
+
+    WHY DON''T YOU TRY AGAIN?'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bf559e60e9e6fb94c9fd09eef2168726, type: 2}
   m_sharedMaterial: {fileID: -5212959856393495495, guid: bf559e60e9e6fb94c9fd09eef2168726, type: 2}
@@ -4941,7 +4949,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1295474259
@@ -5609,7 +5617,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Torna alla mappa
+  m_text: BACK TO MAP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bf559e60e9e6fb94c9fd09eef2168726, type: 2}
   m_sharedMaterial: {fileID: -5212959856393495495, guid: bf559e60e9e6fb94c9fd09eef2168726, type: 2}
